@@ -1,0 +1,14 @@
+/* Increase the default font size */
+html {
+  font-size: 18pt;
+}
+
+.site-title-link {
+  display: inline-block; /* visible by default */
+}
+
+@media (max-width: 767px) {
+  .site-title-link {
+    display: none !important; /* hide on small screens */
+  }
+}

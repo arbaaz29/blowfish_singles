@@ -1,0 +1,41 @@
+{{ $icon := .Get "icon" | default "check" }}
+{{ $header := .Get "header" }}
+{{ $badge := .Get "badge" }}
+{{ $subheader := .Get "subheader" }}
+{{ $date := .Get "date" | default "" }}
+
+<li class="relative pl-10 mb-10">
+  <!-- Date positioned on the left of vertical line -->
+  {{ if $date }}
+    <div class="timeline-date">{{ $date }}</div>
+  {{ end }}
+  <div class="p-6 rounded-lg shadow-2xl bg-surface-100 dark:bg-surface-800">
+    <div class="flex items-start justify-between flex-wrap gap-4 mb-1">
+      {{ if $header }}
+        <h2 class="text-xl font-bold m-0">{{ $header }}</h2>
+      {{ end }}
+      {{ if $icon }}
+        <span class="inline-block align-middle">
+          {{ partial "icon" $icon }}
+        </span>
+      {{ end }}
+    </div>
+    {{ if or $subheader $badge }}
+      <div class="flex items-center justify-between flex-wrap gap-4 mt-1">
+        {{ if $subheader }}
+          <h4 class="text-md font-medium text-neutral-600 dark:text-neutral-300 m-0">
+            {{ $subheader }}
+          </h4>
+        {{ end }}
+        {{ if $badge }}
+          <span class="inline-block align-middle">
+            {{ partial "badge" $badge }}
+          </span>
+        {{ end }}
+      </div>
+    {{ end }}
+    <div class="mt-4 text-neutral-700 dark:text-neutral-200">
+      {{ .Inner }}
+    </div>
+  </div>
+</li>
