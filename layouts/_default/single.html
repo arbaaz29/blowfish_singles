@@ -67,11 +67,11 @@
       {{ end }}
     </header>
 
-    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+   <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row lg:gap-x-12">
       {{ if or (and (.Params.showTableOfContents | default (.Site.Params.article.showTableOfContents | default false)) (in
         .TableOfContents "<ul")) (.Site.Params.article.showRelatedPosts | default false)
       }}
-        <div class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+        <div class="order-first px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8 lg:w-1/4 shrink-0">
           <div
             class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky {{ if hasPrefix .Site.Params.header.layout "fixed" -}}
               lg:top-[140px]
@@ -88,10 +88,10 @@
         </div>
       {{ end }}
 
-      <div class="min-w-0 min-h-0 max-w-fit">
+      <div class="min-w-0 min-h-0 flex-1">
         {{ partial "series/series.html" . }}
 
-        <div class="article-content max-w-prose mb-20 animate-scale-in">
+        <div class="article-content max-w-full mb-20 animate-scale-in">
           {{ .Content }}
           {{ $defaultReplyByEmail := .Site.Params.replyByEmail }}
           {{ $replyByEmail := default $defaultReplyByEmail .Params.replyByEmail }}
@@ -153,7 +153,7 @@
       {{ end }}
     </section>
 
-    <footer class="pt-8 max-w-prose print:hidden animate-fade-in-delay">
+    <footer class="pt-8 max-w-full print:hidden animate-fade-in-delay">
       {{ partial "article-pagination.html" . }}
       {{ if .Params.showComments | default (.Site.Params.article.showComments | default false) }}
         {{ if templates.Exists "partials/comments.html" }}
