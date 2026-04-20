@@ -106,6 +106,15 @@
     {{ $zoomJS := resources.Get "lib/zoom/zoom.min.umd.js" | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
     <script src="{{ $zoomJS.RelPermalink }}" integrity="{{ $zoomJS.Data.Integrity }}"></script>
   {{ end }}
+  {{ $jsScrollReveal := resources.Get "js/scroll-reveal.js" }}
+  {{ if $jsScrollReveal }}
+    {{ $jsScrollReveal = $jsScrollReveal | resources.Minify | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
+    <script
+      defer
+      type="text/javascript"
+      src="{{ $jsScrollReveal.RelPermalink }}"
+      integrity="{{ $jsScrollReveal.Data.Integrity }}"></script>
+  {{ end }}
 
   {{/* Icons */}}
   {{ if templates.Exists "partials/favicons.html" }}

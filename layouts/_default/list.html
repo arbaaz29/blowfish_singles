@@ -12,7 +12,7 @@
 
 {{ $toc := and (.Params.showTableOfContents | default (.Site.Params.list.showTableOfContents | default false)) (in
 .TableOfContents "<ul") }} 
-<header class="header-animate">
+<header class="header-animate scroll-reveal scroll-reveal-left">
   {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
   {{ partial "breadcrumbs.html" . }}
   {{ end }}
@@ -79,7 +79,7 @@
     mt-12
   {{- else -}}
     mt-0
-  {{- end }} prose flex max-w-full flex-col dark:prose-invert lg:flex-row section-animate">
+  {{- end }} prose flex max-w-full flex-col dark:prose-invert lg:flex-row section-animate scroll-reveal">
   {{ if $toc }}
   <div class="order-first px-0 lg:order-last lg:max-w-xs ltr:lg:pl-8 rtl:lg:pr-8">
     <div class="toc ltr:pl-5 rtl:pr-5 lg:sticky {{ if hasPrefix .Site.Params.header.layout "fixed" -}}
@@ -103,7 +103,7 @@
 
   {{ if not $cardView }}
 
-  <section class="space-y-10 w-full section-animate">
+  <section class="space-y-10 w-full section-animate scroll-reveal">
     {{ if not $orderByWeight }}
       {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
       {{ if $groupByYear }}
@@ -112,14 +112,14 @@
       </h2>
       {{ end }}
       {{ range .Pages }}
-      <div class="simple-link-animate">
+      <div class="simple-link-animate scroll-reveal">
         {{ partial "article-link/simple.html" . }}
       </div>
       {{ end }}
       {{ end }}
     {{ else }}
       {{ range (.Paginate (.Pages.ByWeight)).Pages }}
-      <div class="simple-link-animate">
+      <div class="simple-link-animate scroll-reveal">
         {{ partial "article-link/simple.html" . }}
       </div>
       {{ end }}
@@ -132,14 +132,14 @@
 
     {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
       {{ if $cardViewScreenWidth }}
-      <div class="relative w-screen max-w-[1600px] px-[30px] left-[calc(max(-50vw,-800px)+50%)] section-animate">
+      <div class="relative w-screen max-w-[1600px] px-[30px] left-[calc(max(-50vw,-800px)+50%)] section-animate scroll-reveal">
       {{ end }}
         <h2 class="mt-12 mb-3 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300 year-header">
           {{ .Key }}
         </h2>
       <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3 {{ if $cardViewScreenWidth }} xl:grid-cols-4 2xl:grid-cols-5 {{ end }}">
         {{ range .Pages }}
-        <div class="card-animate">
+        <div class="card-animate scroll-reveal scroll-reveal-scale">
           {{ partial "article-link/card.html" . }}
         </div>
         {{ end }}
@@ -150,22 +150,22 @@
     {{ else }}
 
       {{ if $cardViewScreenWidth }}
-      <div class="relative w-screen max-w-[1600px] px-[30px] left-[calc(max(-50vw,-800px)+50%)] section-animate">
+      <div class="relative w-screen max-w-[1600px] px-[30px] left-[calc(max(-50vw,-800px)+50%)] section-animate scroll-reveal">
       <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
       {{ else }}
-      <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3 section-animate">
+      <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3 section-animate scroll-reveal">
       {{ end }}
       {{ if not $orderByWeight }}
         {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
         {{ range .Pages }}
-        <div class="card-animate">
+        <div class="card-animate scroll-reveal scroll-reveal-scale">
           {{ partial "article-link/card.html" . }}
         </div>
         {{ end }}
         {{ end }}
       {{ else }}
         {{ range (.Paginate (.Pages.ByWeight)).Pages }}
-        <div class="card-animate">
+        <div class="card-animate scroll-reveal scroll-reveal-scale">
           {{ partial "article-link/card.html" . }}
         </div>
         {{ end }}
@@ -178,7 +178,7 @@
   {{end}}
 
 {{ else }}
-<section class="mt-10 prose dark:prose-invert section-animate">
+<section class="mt-10 prose dark:prose-invert section-animate scroll-reveal">
   <p class="py-8 border-t">
     <em>{{ i18n "list.no_articles" | emojify }}</em>
   </p>

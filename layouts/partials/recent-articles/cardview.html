@@ -2,10 +2,12 @@
 {{ $recentArticles = .Site.Params.homepage.showRecentItems }}
 
 
-<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3 scroll-reveal">
   {{ range first $recentArticles (.Paginate (where .Site.RegularPages "Type" "in"
     .Site.Params.mainSections)).Pages
   }}
-    {{ partial "article-link/card.html" . }}
+    <div class="card-animate scroll-reveal scroll-reveal-scale">
+      {{ partial "article-link/card.html" . }}
+    </div>
   {{ end }}
 </section>
