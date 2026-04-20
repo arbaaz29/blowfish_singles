@@ -65,9 +65,6 @@
 
 {{- with $featured -}}
 
-{{ if $shouldAddHeaderSpace | default true}}
-<div id="hero" class="h-[150px] md:h-[200px]"></div>
-{{ end }}
 
 {{ if or $disableImageOptimization (strings.HasSuffix $featured ".svg")}}
     {{ with . }}
