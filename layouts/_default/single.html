@@ -13,7 +13,7 @@
       {{ end }}
     {{ end }}
 
-    <header id="single_header" class="mt-5 max-w-prose animate-fade-in-up">
+    <header id="single_header" class="max-w-full mb-20 animate-scale-in">
       {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
         {{ partial "breadcrumbs.html" . }}
       {{ end }}
