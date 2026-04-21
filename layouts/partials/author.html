@@ -14,7 +14,9 @@
       {{ end }}
       <div class="self-stretch flex items-center flex-shrink-0 ltr:mr-4 rtl:ml-4">
         <img
-          class="!mt-0 !mb-0 h-full max-h-20 w-auto aspect-square rounded-full object-cover"
+          class="!mt-0 !mb-0 h-35 w-70 rounded-full object-cover flex-shrink-0 ltr:mr-4 rtl:ml-4"
+                  width="120"
+                  height="120"
           alt="{{ $.Site.Params.Author.name | default "Author" }}"
           src="{{ $authorImage.RelPermalink }}">
       </div>
